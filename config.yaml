@@ -1,0 +1,20 @@
+# OPA instance config file
+# Runnable using the management API: https://github.com/numerica-ideas/opa-management-api
+
+services:
+  - name: ni_management_api
+    url: https://xxxxxxxxx.execute-api.ca-central-1.amazonaws.com/stage
+
+bundles:
+  authz:
+    service: ni_management_api
+    resource: bundles/master
+    persist: true
+    polling:
+      min_delay_seconds: 10
+      max_delay_seconds: 20
+
+labels:
+  app: ni_management_api
+  region: ca_central_1
+  environment: master
